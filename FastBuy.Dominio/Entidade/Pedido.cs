@@ -1,10 +1,11 @@
 ﻿using FastBuy.Dominio.ObjetoValor;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FastBuy.Dominio.Entidade
 {
-    public class Pedido
+    public class Pedido : entidade
     {
         public int Id { get; set; }
         public DateTime Data { get; set; }
@@ -13,7 +14,7 @@ namespace FastBuy.Dominio.Entidade
 
         public DateTime DataEntregaPedido { get; set; }
 
-        public int CEP { get; set; }
+        public string CEP { get; set; }
 
         public string Estado { get; set; }
 
@@ -25,5 +26,20 @@ namespace FastBuy.Dominio.Entidade
         public FormaPagamento FormaPagamento { get; set; }
 
         public ICollection<ItemPedido> ItensPedidos { get; set; }
+
+        public override void Validate()
+        {
+
+            LimparMensagem();
+            if (!ItensPedidos.Any())
+            {            
+                AdicionarCritica("O Pedido precisa de itens!");
+            }
+
+            if (string.IsNullOrEmpty(CEP))
+            {
+                AdicionarCritica("O CEP Precisa ser preenchido!");
+            }
+        }
     }
 }

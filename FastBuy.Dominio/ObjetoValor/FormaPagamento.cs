@@ -1,4 +1,5 @@
-﻿using FastBuy.Dominio.Enumerados;
+﻿using FastBuy.Dominio.Entidade;
+using FastBuy.Dominio.Enumerados;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FastBuy.Dominio.ObjetoValor
 {
-    public class FormaPagamento
+    public class FormaPagamento : entidade
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -34,6 +35,14 @@ namespace FastBuy.Dominio.ObjetoValor
             get { return Id == (int)TipoFormaPagamento.NaoDefinido; }
         }
 
+        public override void Validate()
+        {
+            LimparMensagem();
+            if (Id < 0 && Id > 3 )
+            {
+                AdicionarCritica("O código do método de pagamento é inválido!");
+            }
+        }
     }
 
 
