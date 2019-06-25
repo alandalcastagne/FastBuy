@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FastBuy.Dominio.Contratos
 {
-    interface IProdutoRepositorio : IBaseRepositorio<Produto>
+    public interface IProdutoRepositorio : IBaseRepositorio<Produto>
     {
     }
 }

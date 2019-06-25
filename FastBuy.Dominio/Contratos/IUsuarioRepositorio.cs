@@ -7,7 +7,7 @@ using FastBuy.Dominio.Entidade;
 
 namespace FastBuy.Dominio.Contratos
 {
-    interface IUsuarioRepositorio : IBaseRepositorio<Usuario>
+    public  interface IUsuarioRepositorio : IBaseRepositorio<Usuario>
     {
        
     }

@@ -42,6 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\BaseRepositorio.cs" />
+    <Compile Include="Repositorio\PedidoRepositorio.cs" />
+    <Compile Include="Repositorio\ProdutoRepositorio.cs" />
+    <Compile Include="Repositorio\UsuarioRepositorio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastBuy.Dominio\FastBuy.Dominio.csproj">
+      <Project>{2B75C7A1-5B00-4A54-B65F-BE0C762FEC72}</Project>
+      <Name>FastBuy.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

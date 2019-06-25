@@ -1,13 +1,15 @@
 ﻿using FastBuy.Dominio.Entidade;
+using FastBuy.Dominio.Contratos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FastBuy.Dominio.Contratos
+namespace FastBuy.Repositorio.Repositorio
 {
-    public interface IPedidoRepositorio : IBaseRepositorio<Pedido>
+    public class ProdutoRepositorio : BaseRepositorio<Produto>, IProdutoRepositorio
     {
+
     }
 }
