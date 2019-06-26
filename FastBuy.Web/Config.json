@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "FastBuyDB" :  "server=localhost;uid=root;pwd=123456;database=FastBuyDB"
+
+  }
+}

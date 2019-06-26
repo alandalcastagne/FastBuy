@@ -1,3 +1,4 @@
+using FastBuy.Repositorio.Contexto;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,14 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+
+
+
 
 namespace FastBuy.Web
 {
     public class Startup
     {
+
+        public IConfiguration configuration { get; }
+
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("Config.json", optional:false, reloadOnChange:true);
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -21,6 +32,10 @@ namespace FastBuy.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var connectionString = configuration.GetConnectionString("FastBuyDB");
+            services.AddDbContext<Contexto>(option =>
+            option.UseLazyLoadingProxies()
+            .UseMySql(connectionString, m => m.MigrationsAssembly("FastBuy.Repositorio")));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

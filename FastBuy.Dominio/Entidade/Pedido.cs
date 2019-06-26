@@ -12,6 +12,8 @@ namespace FastBuy.Dominio.Entidade
 
         public int UsuarioId { get; set; }
 
+        public virtual Usuario Usuario { get; set; }
+
         public DateTime DataEntregaPedido { get; set; }
 
         public string CEP { get; set; }
