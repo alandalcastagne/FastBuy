@@ -1,5 +1,6 @@
 ﻿using FastBuy.Dominio.Contratos;
 using FastBuy.Dominio.Entidade;
+using FastBuy.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,9 @@ namespace FastBuy.Repositorio.Repositorio
 {
     public class PedidoRepositorio: BaseRepositorio<Pedido>, IPedidoRepositorio
     {
+        public PedidoRepositorio(FBContexto fBContexto) : base(fBContexto)
+        {
+
+        }
     }
 }

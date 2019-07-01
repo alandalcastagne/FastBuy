@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-
-
-
+using FastBuy.Dominio.Contratos;
+using FastBuy.Repositorio.Repositorio;
 
 namespace FastBuy.Web
 {
@@ -36,6 +35,8 @@ namespace FastBuy.Web
             services.AddDbContext<FBContexto>(option =>
                     option.UseLazyLoadingProxies()
                         .UseMySql(connectionString, m => m.MigrationsAssembly("FastBuy.Repositorio")));
+
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
