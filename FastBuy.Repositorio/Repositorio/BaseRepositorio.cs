@@ -1,4 +1,5 @@
 ﻿using FastBuy.Dominio.Contratos;
+using FastBuy.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,40 +10,51 @@ namespace FastBuy.Repositorio.Repositorio
 {
     public class BaseRepositorio<Tentity> : IBaseRepositorio<Tentity> where Tentity : class
     {
+        protected readonly FBContexto Fbcontexto;
 
-        public BaseRepositorio()
+        public BaseRepositorio(FBContexto fBContexto)
         {
-
+            Fbcontexto = fBContexto;
         }
 
          public void Adicionar(Tentity entity)
         {
-            throw new NotImplementedException();
+            Fbcontexto.Set<Tentity>().Add(entity);
+            Fbcontexto.SaveChanges();
         }
 
         public void Atualizar(Tentity entity)
         {
-            throw new NotImplementedException();
+            Fbcontexto.Set<Tentity>().Update(entity);
+            Fbcontexto.SaveChanges();
         }
 
-        public void Dispose()
+         public Tentity ObterPorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Tentity ObterPorId(int id)
-        {
-            throw new NotImplementedException();
+            return Fbcontexto.Set<Tentity>().Find(id);
         }
 
         public IEnumerable<Tentity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return Fbcontexto.Set<Tentity>().ToList();
         }
 
         public void Remover(Tentity entity)
         {
-            throw new NotImplementedException();
+            Fbcontexto.Remove(entity);
+            Fbcontexto.SaveChanges();
         }
+
+        public void Dispose()
+        {
+            Fbcontexto.Dispose();
+        }
+
+     
     }
+
+       
+
+       
+    
 }
