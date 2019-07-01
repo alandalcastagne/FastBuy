@@ -18,8 +18,8 @@ namespace FastBuy.Repositorio.Config
             builder
                 .Property(pc => pc.Data)
                 .IsRequired()
-                .HasMaxLength(10)
-                .HasColumnType("varchar");
+                .HasMaxLength(10);
+                
 
 
             builder
@@ -30,43 +30,40 @@ namespace FastBuy.Repositorio.Config
             builder
                 .Property(pc => pc.DataEntregaPedido)
                 .IsRequired()
-                .HasMaxLength(10)
-                .HasColumnType("varchar");
+                .HasMaxLength(10);
+                
 
             builder
                 .Property(pc => pc.CEP)
                 .IsRequired()
                 .HasMaxLength(8)
-                .HasColumnType("varchar");
+                .HasColumnType("varchar(50)");
 
             builder
                .Property(pc => pc.Estado)
                .IsRequired()
                .HasMaxLength(50)
-               .HasColumnType("varchar");
+               .HasColumnType("varchar(50)");
 
             builder
                .Property(pc => pc.Cidade)
                .IsRequired()
                .HasMaxLength(50)
-               .HasColumnType("varchar");
+               .HasColumnType("varchar(50)");
 
             builder
                .Property(pc => pc.EnderecoCompleto)
                .IsRequired()
                .HasMaxLength(50)
-               .HasColumnType("varchar");
+               .HasColumnType("varchar(50)");
 
             builder
                .Property(pc => pc.FormaPagamentoId)
                .IsRequired()
                .HasColumnType("int");
 
-            builder
-               .Property(pc => pc.FormaPagamento)
-               .IsRequired()
-               .HasMaxLength(50)
-               .HasColumnType("varchar");
+            builder.HasOne(p => p.FormaPagamento);
+
 
             builder
                 .HasOne(pc => pc.Usuario);

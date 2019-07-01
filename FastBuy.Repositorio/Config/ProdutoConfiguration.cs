@@ -24,7 +24,7 @@ namespace FastBuy.Repositorio.Config
                 .Property(p => p.Descricao)
                 .IsRequired()
                 .HasMaxLength(400)
-                .HasColumnType("varchar");
+                .HasColumnType("varchar(50)");
 
             builder
                 .Property(p => p.Preco)

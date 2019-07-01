@@ -29,13 +29,13 @@ namespace FastBuy.Repositorio.Config
                 .Property(u => u.Nome)
                 .IsRequired()
                 .HasMaxLength(50)
-                .HasColumnType("varchar");
+                .HasColumnType("varchar(50)");
 
             builder
                 .Property(u => u.SobreNome)
                 .IsRequired()
                 .HasMaxLength(50)
-                .HasColumnType("varchar");
+                .HasColumnType("varchar(50)");
 
             builder
                .HasMany(u => u.Pedidos)

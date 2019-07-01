@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FastBuy.Repositorio.Contexto
 {
-    public  class Contexto : DbContext
+    public  class FBContexto : DbContext
     {
         public DbSet<Usuario>  Usuarios { get; set; }
 
@@ -23,7 +23,7 @@ namespace FastBuy.Repositorio.Contexto
 
         public DbSet<FormaPagamento> FormaPagamento { get; set; }
 
-        public Contexto(DbContextOptions options) : base(options)
+        public FBContexto(DbContextOptions options) : base(options)
         {
 
         }
@@ -35,6 +35,28 @@ namespace FastBuy.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
+
+            modelBuilder.Entity<FormaPagamento>().HasData(
+                new FormaPagamento()
+                {
+                    Id = 1,
+                    Nome = "Boleto",
+                    Descricao = "Forma de Pagamento Boleto"
+                },               
+                  new FormaPagamento()
+                  {
+                      Id = 2,
+                      Nome = "Cartão de Crédito",
+                      Descricao = "Forma de Pagamento Cartão de Crédito"
+                  },
+                   new FormaPagamento()
+                   {
+                       Id = 3,
+                       Nome = "Depósito",
+                       Descricao = "Forma de Pagamento Depósito"
+                   }
+                );
+
             base.OnModelCreating(modelBuilder);
         }
 

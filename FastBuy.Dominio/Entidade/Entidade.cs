@@ -8,7 +8,7 @@ namespace FastBuy.Dominio.Entidade
 {
     public abstract class entidade
     {
-        public List<string> _mensagemDeValidacao { get; set; }
+        private List<string> _mensagemDeValidacao { get; set; }
 
         private List<string> GetMensagemDeValidacao
         {
